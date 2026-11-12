@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NEXO DJ: software de declaraciones juradas SII | Chile DJ</title>
+
+    <meta
+        name="description"
+        content="Software de declaraciones juradas para la Operación Renta 2027. NEXO DJ revisa tu Excel en tu computador, te muestra cada error por fila y campo, y tus datos nunca salen de tu equipo."
+    >
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0F2A1F">
+
+    <link rel="canonical" href="https://chiledj.cl/">
+
+    <!-- Vista previa al compartir (WhatsApp, LinkedIn, Facebook, X) -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_CL">
+    <meta property="og:site_name" content="NEXO DJ">
+    <meta property="og:url" content="https://chiledj.cl/">
+    <meta property="og:title" content="NEXO DJ · Validador de declaraciones juradas SII">
+    <meta property="og:description" content="Detecta los errores de tus declaraciones juradas antes de presentarlas al SII. Tu información se queda en tu equipo.">
+    <meta property="og:image" content="https://chiledj.cl/img/og-nexo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+    <!-- Datos estructurados para Google -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://chiledj.cl/#organizacion",
+                "name": "NEXO DJ",
+                "alternateName": "Chile DJ",
+                "url": "https://chiledj.cl/",
+                "logo": "https://chiledj.cl/img/apple-touch-icon.png",
+                "email": "contacto@chiledj.cl",
+                "areaServed": "CL"
+            },
+            {
+                "@type": "SoftwareApplication",
+                "name": "NEXO DJ",
+                "alternateName": ["Chile DJ", "Software de declaraciones juradas"],
+                "applicationCategory": "BusinessApplication",
+                "operatingSystem": "Windows 10, Windows 11",
+                "description": "Aplicación de escritorio para validar declaraciones juradas antes de presentarlas al Servicio de Impuestos Internos (SII) de Chile. Revisa formato, estructura, consistencia y reglas de validación de archivos Excel, indica cada error por fila y campo, y genera el archivo preparado para el SII.",
+                "inLanguage": "es-CL",
+                "publisher": { "@id": "https://chiledj.cl/#organizacion" },
+                "featureList": [
+                    "Validación de formato y estructura",
+                    "Revisión de consistencia de datos",
+                    "Reglas de validación",
+                    "Errores indicados por fila y campo",
+                    "Plantillas Excel adaptadas a los formatos del SII",
+                    "Información almacenada localmente",
+                    "Sin límite de contribuyentes"
+                ]
+            }
+        ]
+    }
+    </script>
+
+    <!-- Tipografías -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css?v=3">
+</head>
+
+<body>
+
+    <!-- Íconos (se reutilizan con <use href="#i-...">) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+            <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+            <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+            <symbol id="i-infinity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4Zm0 0c2 2.67 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1.33-6 4Z"/></symbol>
+            <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+            <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+            <symbol id="i-file-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9.5 12.5l5 5M14.5 12.5l-5 5"/></symbol>
+            <symbol id="i-hourglass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12M6 22h12M7 2v4a5 5 0 0 0 10 0V2M7 22v-4a5 5 0 0 1 10 0v4"/></symbol>
+            <symbol id="i-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M12 7v4M12 14h.01"/></symbol>
+            <symbol id="i-user-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></symbol>
+            <symbol id="i-sheet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></symbol>
+            <symbol id="i-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5M12 3v12"/></symbol>
+            <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/></symbol>
+            <symbol id="i-calculator" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 19h.01M12 19h.01M16 19h.01"/></symbol>
+            <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M2 13h20"/></symbol>
+            <symbol id="i-store" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 4.5 4h15L21 9M4 9v11h16V9M3 9h18M10 20v-6h4v6"/></symbol>
+            <symbol id="i-file-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 15l2 2 4-4"/></symbol>
+            <symbol id="i-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.9 4.2A10 10 0 0 1 12 4c6.5 0 10 8 10 8a17 17 0 0 1-2.2 3.2M6.6 6.6C3.6 8.6 2 12 2 12s3.5 8 10 8a9.7 9.7 0 0 0 5.4-1.6M9.9 9.9a3 3 0 0 0 4.2 4.2M2 2l20 20"/></symbol>
+            <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+            <symbol id="i-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+            <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></symbol>
+        </defs>
+    </svg>
+
+    <a href="#main" class="skip-link">Saltar al contenido</a>
+
+    <!-- =========================================================
+         NAVBAR
+         ========================================================= -->
+
+    <header class="navbar" id="navbar">
+        <div class="container navbar-content">
+
+            <a href="#inicio" class="logo" aria-label="NEXO DJ, ir al inicio">
+                <img src="img/nexo-horizontal-claro.svg" alt="NEXO DJ" class="logo-lockup" width="150" height="43">
+            </a>
+
+            <nav class="main-nav" id="mainNav" aria-label="Principal">
+                <a href="#por-que">Producto</a>
+                <a href="#seguridad">Seguridad</a>
+                <a href="#como-funciona">Cómo funciona</a>
+                <a href="#requisitos">Requisitos</a>
+                <a href="#preguntas">Preguntas</a>
+                <a href="#contacto" class="nav-button">Solicitar acceso</a>
+            </nav>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainNav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+    </header>
+
+
+    <main id="main">
+
+        <!-- =====================================================
+             HERO
+             ===================================================== -->
+
+        <section class="hero" id="inicio">
+
+            <div class="container hero-grid">
+
+                <div class="hero-content">
+
+                    <div class="hero-eyebrow in-fade" style="--d:100ms">Software de declaraciones juradas SII</div>
+
+                    <h1 class="in-blur" style="--d:250ms">
+                        Declaraciones juradas
+                        <em class="accent">sin errores</em>
+                        antes de llegar al SII
+                    </h1>
+
+                    <p class="hero-description in-fade" style="--d:650ms">
+                        Cargas tu Excel y NEXO DJ lo revisa en tu propio computador:
+                        te dice en qué fila y en qué campo está cada error, sin
+                        subir los datos de tus clientes a ningún servidor.
+                    </p>
+
+                    <div class="hero-buttons in-fade" style="--d:800ms">
+                        <a href="#contacto" class="button button-primary">
+                            Solicitar acceso
+                            <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+                        </a>
+                        <a href="#como-funciona" class="button button-outline">
+                            Ver cómo funciona
+                        </a>
+                    </div>
+
+                    <ul class="hero-tags in-fade" style="--d:950ms;--rise:0px" aria-label="Qué revisa NEXO DJ">
+                        <li>Formato SII</li>
+                        <li>RUT y dígito verificador</li>
+                        <li>Montos y retenciones</li>
+                        <li>Cuadratura de totales</li>
+                        <li>Campos obligatorios</li>
+                    </ul>
+
+                </div>
+
+
+                <!-- Captura de la app sobre panel de marca -->
+
+                <div class="hero-visual">
+
+                    <div class="hero-panel" aria-hidden="true"></div>
+
+                    <figure class="app-shot">
+                        <div class="app-shot-bar" aria-hidden="true"><i></i><i></i><i></i><span class="app-shot-note"><svg><use href="#i-lock"/></svg>Datos guardados en tu equipo</span></div>
+                        <img src="img/app-observaciones.png" width="1783" height="974"
+                             alt="Resultado de una DJ 1879 en la aplicación: 5 observaciones, cada una con su regla, hoja, fila y campo">
+                    </figure>
+
+
+                    <p class="console-caption">Captura real · datos ficticios</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             CIFRAS
+             ===================================================== -->
+
+        <section class="stats" aria-label="NEXO DJ en cifras">
+            <div class="container">
+                <dl class="stats-grid">
+                    <div><dt>100% local</dt><dd>Tus archivos se procesan y guardan en tu computador</dd></div>
+                    <div><dt>Fila y campo</dt><dd>De cada error, para corregir sin buscar</dd></div>
+                    <div><dt>Sin límite</dt><dd>De contribuyentes, sin costo por volumen</dd></div>
+                    <div><dt>4 pasos</dt><dd>Del Excel al archivo listo para el SII</dd></div>
+                </dl>
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             VELOCIDAD
+             ===================================================== -->
+
+        <section class="section speed" id="velocidad">
+            <div class="container">
+
+                <div class="section-heading centered reveal">
+                    <div class="eyebrow">Velocidad</div>
+                    <h2>Validar una declaración jurada no debería tomar horas</h2>
+                    <p>
+                        Hay sistemas en los que revisar unos pocos registros
+                        significa horas esperando que un servidor termine de
+                        procesar. NEXO DJ trabaja en tu computador: cargas el
+                        archivo y ves el resultado al instante.
+                    </p>
+                </div>
+
+                <div class="race reveal" id="race" aria-label="Ilustración: un sistema que procesa en un servidor remoto sigue esperando mientras NEXO DJ ya terminó la validación">
+
+                    <div class="lane">
+                        <div class="lane-top">
+                            <span class="lane-name">Procesamiento en servidor remoto</span>
+                            <span class="lane-time" id="slowTime">00:00:00</span>
+                        </div>
+                        <div class="lane-track"><div class="lane-bar is-slow" id="slowBar"></div></div>
+                        <div class="lane-status" id="slowStatus">En cola…</div>
+                    </div>
+
+                    <div class="lane is-cronos">
+                        <div class="lane-top">
+                            <span class="lane-name">
+                                <img src="img/nexo-simbolo-oscuro.svg" alt="" width="20" height="20"> NEXO DJ, en tu computador
+                            </span>
+                            <span class="lane-done" id="fastDone">
+                                <svg aria-hidden="true"><use href="#i-check"/></svg> Listo
+                            </span>
+                        </div>
+                        <div class="lane-track"><div class="lane-bar is-fast" id="fastBar"></div></div>
+                        <div class="lane-status">Validación completa · errores listos para corregir</div>
+                    </div>
+
+                    <p class="race-note">Ilustración referencial</p>
+
+                </div>
+
+                <ul class="speed-points">
+                    <li class="reveal">
+                        <svg aria-hidden="true"><use href="#i-bolt"/></svg>
+                        <div>
+                            <strong>Sin colas ni servidores</strong>
+                            <span>Tu archivo no espera turno detrás del de nadie: se revisa en tu equipo.</span>
+                        </div>
+                    </li>
+                    <li class="reveal" style="--d:.08s">
+                        <svg aria-hidden="true"><use href="#i-check"/></svg>
+                        <div>
+                            <strong>Corrige y vuelve a validar</strong>
+                            <span>Ajustas el Excel y lo vuelves a cargar las veces que haga falta.</span>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             PROBLEMA
+             ===================================================== -->
+
+        <section class="section problem" id="problema">
+            <div class="container problem-layout">
+
+                <div class="section-heading reveal">
+                    <div class="eyebrow">El problema</div>
+                    <h2>Un solo dato mal ingresado puede costarte una rectificación</h2>
+                    <p>
+                        Una declaración jurada puede tener miles de filas. Revisarlas
+                        a mano es lento, y basta un descuido para que un error
+                        llegue al SII.
+                    </p>
+                </div>
+
+                <div class="problem-list">
+
+                    <article class="problem-card reveal">
+                        <div class="icon-box"><svg aria-hidden="true"><use href="#i-file-x"/></svg></div>
+                        <div>
+                            <h3>Datos incorrectos</h3>
+                            <p>
+                                Un RUT mal digitado, un monto que no cuadra o un
+                                campo vacío bastan para generar inconsistencias
+                                en la declaración.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="problem-card reveal" style="--d:.08s">
+                        <div class="icon-box"><svg aria-hidden="true"><use href="#i-hourglass"/></svg></div>
+                        <div>
+                            <h3>Horas perdidas</h3>
+                            <p>
+                                Revisar fila por fila a mano, o esperar a que un
+                                sistema lento termine de procesar, puede costarte
+                                horas en plena temporada, incluso con pocos registros.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="problem-card reveal" style="--d:.16s">
+                        <div class="icon-box"><svg aria-hidden="true"><use href="#i-message"/></svg></div>
+                        <div>
+                            <h3>Observaciones posteriores</h3>
+                            <p>
+                                Un error que no detectas antes de presentar puede
+                                terminar en una observación del SII y en una
+                                rectificación.
+                            </p>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             POR QUÉ CRONOS
+             ===================================================== -->
+
+        <section class="section why" id="por-que">
+            <div class="container">
+
+                <div class="section-heading centered reveal">
+                    <div class="eyebrow">Por qué NEXO DJ</div>
+                    <h2>Sabes qué corregir y <em>dónde</em></h2>
+                    <p>
+                        NEXO DJ hace el trabajo repetitivo de revisar para que tú
+                        te enfoques en corregir y presentar a tiempo.
+                    </p>
+                </div>
+
+                <div class="bento">
+
+                    <article class="bento-card bento-lg reveal">
+                        <div>
+                            <div class="icon-box"><svg aria-hidden="true"><use href="#i-search"/></svg></div>
+                            <h3>Detecta errores antes de presentar</h3>
+                            <p>
+                                Revisa formato, estructura, consistencia y reglas
+                                de validación, y te indica la fila y el campo
+                                exacto de cada problema.
+                            </p>
+                        </div>
+                        <ul class="error-list" aria-label="Ejemplos de validaciones">
+                            <li><span class="tag tag-err">Error</span> RUT inválido <span class="where">fila 214 · RUT</span></li>
+                            <li><span class="tag tag-warn">Revisar</span> Monto fuera de rango <span class="where">fila 587 · Monto</span></li>
+                            <li><span class="tag tag-err">Error</span> Campo obligatorio vacío <span class="where">fila 903 · Comuna</span></li>
+                            <li><span class="tag tag-ok">OK</span> Totales consistentes <span class="where">resumen</span></li>
+                        </ul>
+                    </article>
+
+                    <article class="bento-card bento-dark reveal" style="--d:.08s">
+                        <div class="icon-box"><svg aria-hidden="true"><use href="#i-clock"/></svg></div>
+                        <h3>Resultados al instante</h3>
+                        <p>
+                            Como todo se procesa en tu computador, ves los
+                            errores apenas cargas el archivo.
+                        </p>
+                    </article>
+
+                    <article class="bento-card bento-md reveal">
+                        <div class="icon-box"><svg aria-hidden="true"><use href="#i-sheet"/></svg></div>
+                        <h3>Trabajas en Excel, como siempre</h3>
+                        <p>
+                            Las plantillas siguen los formatos del SII, así que no
+                            tienes que aprender un sistema nuevo.
+                        </p>
+                    </article>
+
+                    <article class="bento-card bento-md reveal" style="--d:.08s">
+                        <div class="icon-box"><svg aria-hidden="true"><use href="#i-infinity"/></svg></div>
+                        <h3>Sin límite de contribuyentes</h3>
+                        <p>
+                            Trabaja con todos los contribuyentes que necesites,
+                            sin costos adicionales por volumen.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             SEGURIDAD Y VELOCIDAD
+             ===================================================== -->
+
+        <section class="section security" id="seguridad">
+            <div class="container">
+
+                <div class="security-layout">
+
+                    <div class="section-heading reveal">
+                        <div class="eyebrow">Seguridad</div>
+                        <h2>La información de tus clientes no debería viajar a <em>ningún lado</em></h2>
+                        <p>
+                            Las declaraciones juradas contienen RUT, montos y datos
+                            confidenciales. Con NEXO DJ, esa información se procesa y
+                            se guarda solo en tu computador.
+                        </p>
+
+                        <ul class="security-points">
+                            <li>
+                                <div class="icon-box"><svg aria-hidden="true"><use href="#i-lock"/></svg></div>
+                                <div>
+                                    <h3>Sin servidores externos</h3>
+                                    <p>Tus archivos no se suben a la nube ni a plataformas de terceros.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon-box"><svg aria-hidden="true"><use href="#i-eye-off"/></svg></div>
+                                <div>
+                                    <h3>Nadie más ve tus datos</h3>
+                                    <p>Como los archivos no salen de tu equipo, ningún tercero puede ver la información de tus clientes.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="where-compare reveal" style="--d:.1s">
+
+                        <div class="where-card">
+                            <span class="where-label">Herramientas en la nube</span>
+                            <ul>
+                                <li>Tus archivos se suben a servidores de otra empresa</li>
+                                <li>Los datos quedan almacenados fuera de tu control</li>
+                                <li>La velocidad depende del servidor y la conexión</li>
+                            </ul>
+                        </div>
+
+                        <div class="where-card is-cronos">
+                            <span class="where-label">
+                                <img src="img/nexo-simbolo-oscuro.svg" alt="" width="20" height="20"> Con NEXO DJ
+                            </span>
+                            <ul>
+                                <li>Tus archivos se quedan en tu computador</li>
+                                <li>Los datos siguen siempre bajo tu control</li>
+                                <li>El resultado aparece apenas cargas el archivo</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             CÓMO FUNCIONA
+             ===================================================== -->
+
+        <section class="section how" id="como-funciona">
+            <div class="container">
+
+                <div class="section-heading centered reveal">
+                    <div class="eyebrow">Cómo funciona</div>
+                    <h2>De tu Excel a un archivo listo en 4 pasos</h2>
+                    <p>
+                        Trabajas con planillas Excel que ya conoces y NEXO DJ
+                        revisa los datos.
+                    </p>
+                </div>
+
+                <ol class="steps">
+
+                    <li class="step reveal">
+                        <div class="step-number"><svg aria-hidden="true"><use href="#i-user-plus"/></svg></div>
+                        <div class="step-label">Paso 1</div>
+                        <h3>Crea tu contribuyente</h3>
+                        <p>Registra los datos básicos de la empresa o persona con la que trabajarás.</p>
+                    </li>
+
+                    <li class="step reveal" style="--d:.08s">
+                        <div class="step-number"><svg aria-hidden="true"><use href="#i-sheet"/></svg></div>
+                        <div class="step-label">Paso 2</div>
+                        <h3>Completa la plantilla</h3>
+                        <p>Usa las plantillas Excel de NEXO DJ, adaptadas a los formatos del SII.</p>
+                    </li>
+
+                    <li class="step reveal" style="--d:.16s">
+                        <div class="step-number"><svg aria-hidden="true"><use href="#i-upload"/></svg></div>
+                        <div class="step-label">Paso 3</div>
+                        <h3>Carga y valida</h3>
+                        <p>Importa el archivo y NEXO DJ revisa cada dato y cada regla de validación.</p>
+                    </li>
+
+                    <li class="step reveal" style="--d:.24s">
+                        <div class="step-number"><svg aria-hidden="true"><use href="#i-download"/></svg></div>
+                        <div class="step-label">Paso 4</div>
+                        <h3>Corrige y descarga</h3>
+                        <p>Corrige lo que NEXO DJ encontró y descarga el archivo preparado para el SII.</p>
+                    </li>
+
+                </ol>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             COMPARACIÓN
+             ===================================================== -->
+
+        <section class="section compare" id="comparacion">
+            <div class="container">
+
+                <div class="section-heading centered reveal">
+                    <div class="eyebrow">Comparación</div>
+                    <h2>Revisar a mano vs. revisar con NEXO DJ</h2>
+                    <p>La misma declaración, dos formas de prepararla.</p>
+                </div>
+
+                <div class="compare-table reveal" role="table" aria-label="Comparación entre revisión manual y revisión con NEXO DJ">
+
+                    <div class="compare-row compare-head" role="row">
+                        <span role="columnheader"></span>
+                        <span role="columnheader">A mano</span>
+                        <span role="columnheader" class="is-cronos">
+                            <img src="img/nexo-simbolo-oscuro.svg" alt="" width="20" height="20"> Con NEXO DJ
+                        </span>
+                    </div>
+
+                    <div class="compare-row" role="row">
+                        <span role="rowheader">Buscar errores</span>
+                        <span role="cell">Fila por fila, a ojo</span>
+                        <span role="cell" class="is-cronos">Automático, en una sola carga</span>
+                    </div>
+
+                    <div class="compare-row" role="row">
+                        <span role="rowheader">Saber qué corregir</span>
+                        <span role="cell">Hay que encontrarlo</span>
+                        <span role="cell" class="is-cronos">Te indica la fila y el campo exacto</span>
+                    </div>
+
+                    <div class="compare-row" role="row">
+                        <span role="rowheader">Formato del archivo</span>
+                        <span role="cell">Lo armas y revisas tú</span>
+                        <span role="cell" class="is-cronos">Plantillas Excel adaptadas al formato SII</span>
+                    </div>
+
+                    <div class="compare-row" role="row">
+                        <span role="rowheader">Archivo para el SII</span>
+                        <span role="cell">Lo generas por tu cuenta</span>
+                        <span role="cell" class="is-cronos">Lo descargas listo desde NEXO DJ</span>
+                    </div>
+
+                    <div class="compare-row" role="row">
+                        <span role="rowheader">Dónde quedan los datos</span>
+                        <span role="cell">Depende de cómo trabajes</span>
+                        <span role="cell" class="is-cronos">En tu equipo, de forma local</span>
+                    </div>
+
+                    <div class="compare-row" role="row">
+                        <span role="rowheader">Varios contribuyentes</span>
+                        <span role="cell">Más trabajo por cada uno</span>
+                        <span role="cell" class="is-cronos">Sin límite ni costo por volumen</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             PARA QUIÉN ES
+             ===================================================== -->
+
+        <section class="section who" id="para-quien">
+            <div class="container">
+
+                <div class="section-heading centered reveal">
+                    <div class="eyebrow">Para quién es</div>
+                    <h2>Para quienes no pueden perder horas en temporada de declaraciones</h2>
+                    <p>
+                        Ya conoces el proceso. Esto es lo que cambia según tu caso.
+                    </p>
+                </div>
+
+                <div class="audience-grid">
+
+                    <article class="audience-card reveal">
+                        <div class="audience-top">
+                            <div class="icon-box"><svg aria-hidden="true"><use href="#i-calculator"/></svg></div>
+                            <span class="audience-tag">Contadores y estudios contables</span>
+                        </div>
+                        <h3>Muchos clientes, los mismos plazos</h3>
+                        <p>Cuando los vencimientos se juntan, una hora de espera atrasa al cliente siguiente.</p>
+                        <ul class="audience-benefits">
+                            <li>Todos los contribuyentes que necesites, sin costo por volumen</li>
+                            <li>Resultados al instante, cliente tras cliente</li>
+                            <li>La información de cada cliente queda en tu equipo</li>
+                        </ul>
+                    </article>
+
+                    <article class="audience-card reveal" style="--d:.06s">
+                        <div class="audience-top">
+                            <div class="icon-box"><svg aria-hidden="true"><use href="#i-briefcase"/></svg></div>
+                            <span class="audience-tag">Empresas</span>
+                        </div>
+                        <h3>Datos sensibles que no deben salir de casa</h3>
+                        <p>Honorarios, remuneraciones y retenciones son información confidencial de tu empresa y tus personas.</p>
+                        <ul class="audience-benefits">
+                            <li>Todo se procesa y guarda en tu propio computador</li>
+                            <li>Ningún tercero accede a tus datos</li>
+                            <li>Errores detectados antes de presentar al SII</li>
+                        </ul>
+                    </article>
+
+                    <article class="audience-card reveal" style="--d:.12s">
+                        <div class="audience-top">
+                            <div class="icon-box"><svg aria-hidden="true"><use href="#i-store"/></svg></div>
+                            <span class="audience-tag">Pymes</span>
+                        </div>
+                        <h3>Sin un equipo tributario detrás</h3>
+                        <p>Tienes que presentar a tiempo y no te sobra tiempo para aprender un sistema nuevo.</p>
+                        <ul class="audience-benefits">
+                            <li>Trabajas en Excel, con plantillas en formato SII</li>
+                            <li>Te dice exactamente qué corregir y dónde</li>
+                            <li>Descargas el archivo listo para presentar</li>
+                        </ul>
+                    </article>
+
+                    <article class="audience-card reveal" style="--d:.18s">
+                        <div class="audience-top">
+                            <div class="icon-box"><svg aria-hidden="true"><use href="#i-file-check"/></svg></div>
+                            <span class="audience-tag">Asesores y profesionales tributarios</span>
+                        </div>
+                        <h3>Revisiones que tienen que ser exactas</h3>
+                        <p>NEXO DJ encuentra los errores de formato y de reglas, y tú dedicas el tiempo a lo que requiere criterio.</p>
+                        <ul class="audience-benefits">
+                            <li>Cada error con su fila y su campo</li>
+                            <li>Corrige y vuelve a validar sin esperas</li>
+                            <li>La revisión final sigue siendo tuya</li>
+                        </ul>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             REQUERIMIENTOS TÉCNICOS
+             ===================================================== -->
+
+        <section class="section requirements" id="requisitos">
+            <div class="container">
+
+                <div class="section-heading centered reveal">
+                    <div class="eyebrow">Requerimientos técnicos</div>
+                    <h2>Lo que necesita tu computador</h2>
+                    <p>NEXO DJ es una aplicación de escritorio para Windows y necesita al menos lo siguiente.</p>
+                </div>
+
+                <div class="req-grid">
+
+                    <article class="req-card reveal">
+                        <div class="req-head">
+                            <div class="icon-box"><svg aria-hidden="true"><use href="#i-monitor"/></svg></div>
+                            <div>
+                                <h3>Mínimos</h3>
+                                <span>Para usar NEXO DJ</span>
+                            </div>
+                        </div>
+                        <dl>
+                            <div><dt>Sistema operativo</dt><dd>Windows 10 o Windows 11 (64 bits), con actualizaciones al día</dd></div>
+                            <div><dt>Procesador</dt><dd>4 núcleos de 64 bits: Intel Core i5 (8ª generación o superior) o AMD Ryzen 3 o superior</dd></div>
+                            <div><dt>Memoria RAM</dt><dd>8 GB</dd></div>
+                            <div><dt>Almacenamiento</dt><dd>1 GB libre en disco</dd></div>
+                            <div><dt>Pantalla</dt><dd>1366 × 768 o superior</dd></div>
+                        </dl>
+                    </article>
+
+                    <article class="req-card is-recommended reveal" style="--d:.08s">
+                        <div class="req-head">
+                            <div class="icon-box"><svg aria-hidden="true"><use href="#i-bolt"/></svg></div>
+                            <div>
+                                <h3>Recomendados</h3>
+                                <span>Para el mejor rendimiento</span>
+                            </div>
+                        </div>
+                        <dl>
+                            <div><dt>Sistema operativo</dt><dd>Windows 11 (64 bits)</dd></div>
+                            <div><dt>Procesador</dt><dd>6 núcleos o más: Intel Core i5 / i7 (10ª generación o superior) o AMD Ryzen 5 / 7</dd></div>
+                            <div><dt>Memoria RAM</dt><dd>16 GB</dd></div>
+                            <div><dt>Almacenamiento</dt><dd>SSD con 2 GB libres</dd></div>
+                            <div><dt>Pantalla</dt><dd>Full HD (1920 × 1080)</dd></div>
+                        </dl>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             PREGUNTAS FRECUENTES
+             ===================================================== -->
+
+        <section class="section faq" id="preguntas">
+            <div class="container faq-layout">
+
+                <div class="section-heading reveal">
+                    <div class="eyebrow">Preguntas frecuentes</div>
+                    <h2>Dudas comunes antes de empezar</h2>
+                    <p>¿Tienes otra duda? Escríbenos a <a href="mailto:contacto@chiledj.cl" style="color:var(--blue);font-weight:600">contacto@chiledj.cl</a>.</p>
+                </div>
+
+                <div class="faq-list reveal" style="--d:.08s">
+
+                    <details class="faq-item" open>
+                        <summary>¿Qué significa validar una declaración jurada?</summary>
+                        <p>
+                            Es revisarla antes de enviarla: comprobar que el archivo
+                            tenga el formato correcto, que los datos sean
+                            consistentes y que cumpla las reglas de validación. Así
+                            los errores se corrigen antes de que el SII los detecte.
+                        </p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>¿Qué es una declaración jurada observada?</summary>
+                        <p>
+                            Es una declaración que el SII recibió, pero en la que
+                            encontró inconsistencias que debes aclarar o corregir,
+                            normalmente con una rectificación. Revisar antes de
+                            presentar ayuda a evitarlas.
+                        </p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>¿Qué tipo de errores detecta NEXO DJ?</summary>
+                        <p>
+                            Problemas de formato y estructura del archivo, datos
+                            inconsistentes y reglas de validación que no se cumplen.
+                            Cada error aparece con la fila y el campo donde está,
+                            para que sepas exactamente qué corregir.
+                        </p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>¿Cuánto demora validar una declaración?</summary>
+                        <p>
+                            NEXO DJ procesa en tu computador, sin colas ni servidores
+                            remotos, así que el resultado aparece apenas cargas el
+                            archivo. El tiempo exacto depende del tamaño del archivo
+                            y de tu equipo, pero no tendrás que esperar horas.
+                        </p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>¿Dónde queda guardada mi información?</summary>
+                        <p>
+                            En tu propio equipo. La información que procesa NEXO DJ
+                            se almacena localmente, así mantienes el control de los
+                            datos de tus clientes.
+                        </p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>¿NEXO DJ funciona en la nube?</summary>
+                        <p>
+                            No. Es una aplicación de escritorio para Windows: tus
+                            archivos se procesan en tu computador y no se suben a
+                            servidores externos, por lo que ningún tercero puede
+                            ver tus datos confidenciales.
+                        </p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>¿NEXO DJ presenta la declaración por mí?</summary>
+                        <p>
+                            No. NEXO DJ revisa tu información y genera el archivo
+                            preparado para el SII. La presentación la sigues
+                            haciendo tú, como siempre.
+                        </p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>¿NEXO DJ es una casa de software?</summary>
+                        <p>
+                            NEXO DJ es un software para preparar y revisar
+                            declaraciones juradas, pensado para contadores y
+                            empresas. A diferencia de una casa de software que
+                            envía la declaración por ti, aquí tú revisas, corriges
+                            y descargas el archivo, y lo presentas en el sitio del SII.
+                        </p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>¿Sirve para la Operación Renta 2027?</summary>
+                        <p>
+                            Las declaraciones juradas se presentan antes y durante
+                            la Operación Renta, entre enero y marzo. NEXO DJ te
+                            ayuda a revisarlas en esas semanas, cuando los plazos
+                            se juntan y no hay tiempo para rectificar.
+                        </p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>¿NEXO DJ y Chile DJ son lo mismo?</summary>
+                        <p>
+                            Sí. Chile DJ (chiledj.cl) es el sitio de NEXO DJ, el
+                            software de declaraciones juradas para Chile.
+                        </p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>¿Hay un límite de contribuyentes?</summary>
+                        <p>
+                            No. Puedes trabajar con todos los contribuyentes que
+                            necesites, sin costos adicionales por volumen.
+                        </p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>¿Reemplaza la revisión de un profesional?</summary>
+                        <p>
+                            No. NEXO DJ automatiza la búsqueda de errores y acelera la revisión, 
+                            pero no reemplaza el criterio de un profesional.
+                        </p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>¿Cómo puedo empezar a usarlo?</summary>
+                        <p>
+                            NEXO DJ está en acceso anticipado. Solicita tu acceso
+                            escribiéndonos y te contactaremos con los siguientes
+                            pasos.
+                        </p>
+                    </details>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             CTA / CONTACTO
+             ===================================================== -->
+
+        <section class="cta-section" id="contacto">
+            <div class="container">
+
+                <div class="cta-box reveal">
+
+                    <img src="img/nexo-simbolo-oscuro.svg" alt="" class="cta-mark" aria-hidden="true">
+
+                    <div>
+                        <div class="eyebrow">Acceso anticipado</div>
+                        <h2>Revisa <em>antes</em> de presentar</h2>
+                        <p>
+                            NEXO DJ está en acceso anticipado. Déjanos tus datos y te
+                            contactamos con los pasos siguientes.
+                        </p>
+                        <p class="cta-alt">
+                            ¿Prefieres escribirnos? <a href="mailto:contacto@chiledj.cl">contacto@chiledj.cl</a>
+                        </p>
+                    </div>
+
+                    <form class="cta-form" id="formAcceso" action="enviar.php" method="post" novalidate>
+
+                        <div class="form-field">
+                            <label for="f-nombre">Nombre y apellido *</label>
+                            <input id="f-nombre" name="nombre" type="text" autocomplete="name" minlength="3" maxlength="80" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="f-correo">Correo *</label>
+                            <input id="f-correo" name="correo" type="email" autocomplete="email" maxlength="120" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="f-empresa">Empresa o estudio</label>
+                            <input id="f-empresa" name="empresa" type="text" autocomplete="organization" maxlength="100">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="f-telefono">Teléfono / WhatsApp</label>
+                            <input id="f-telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel" maxlength="16" placeholder="+56 9 1234 5678">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="f-perfil">Perfil *</label>
+                            <select id="f-perfil" name="perfil" required>
+                                <option value="" selected disabled>Selecciona…</option>
+                                <option>Contador independiente</option>
+                                <option>Estudio contable</option>
+                                <option>Empresa (área contable interna)</option>
+                                <option>Otro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="f-volumen">DJ por temporada</label>
+                            <select id="f-volumen" name="volumen">
+                                <option value="" selected>Prefiero no decir</option>
+                                <option>1–10</option>
+                                <option>11–50</option>
+                                <option>51–200</option>
+                                <option>Más de 200</option>
+                            </select>
+                        </div>
+
+                        <div class="form-field form-wide">
+                            <label for="f-mensaje">Mensaje</label>
+                            <textarea id="f-mensaje" name="mensaje" rows="3" maxlength="1000" aria-describedby="mensajeContador"></textarea>
+                            <small class="form-counter" id="mensajeContador">0 / 1000</small>
+                        </div>
+
+                        <!-- Campo trampa para bots: oculto a las personas -->
+                        <div class="form-trap" aria-hidden="true">
+                            <label for="f-sitio">Sitio web</label>
+                            <input id="f-sitio" name="sitio_web" type="text" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <label class="form-check form-wide">
+                            <input name="acepta" type="checkbox" value="1" required>
+                            <span>Acepto que me contacten sobre NEXO DJ *</span>
+                        </label>
+
+                        <div class="form-wide form-submit">
+                            <button type="submit" class="button button-light">
+                                <svg aria-hidden="true" style="width:18px;height:18px"><use href="#i-mail"/></svg>
+                                Solicitar acceso
+                            </button>
+                            <p class="form-status" id="formEstado" role="status" aria-live="polite"></p>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+
+    <footer class="footer">
+        <div class="container">
+
+            <div class="footer-top">
+
+                <div class="footer-brand">
+                    <a href="#inicio" class="logo" aria-label="NEXO DJ, ir al inicio">
+                        <img src="img/nexo-horizontal-oscuro.svg" alt="NEXO DJ" class="logo-lockup" width="150" height="43">
+                    </a>
+                    <p>Validador de declaraciones juradas: detecta errores en tus archivos antes de presentarlos al SII.</p>
+                </div>
+
+                <div>
+                    <h4>Producto</h4>
+                    <ul>
+                        <li><a href="#velocidad">Velocidad</a></li>
+                        <li><a href="#por-que">Por qué NEXO DJ</a></li>
+                        <li><a href="#seguridad">Seguridad</a></li>
+                        <li><a href="#como-funciona">Cómo funciona</a></li>
+                        <li><a href="#comparacion">Comparación</a></li>
+                        <li><a href="#para-quien">Para quién es</a></li>
+                        <li><a href="#requisitos">Requerimientos técnicos</a></li>
+                        <li><a href="#preguntas">Preguntas frecuentes</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="mailto:contacto@chiledj.cl">contacto@chiledj.cl</a></li>
+                        <li><a href="#contacto">Solicitar acceso</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <span>© <span id="year">2026</span> NEXO DJ. Todos los derechos reservados.</span>
+                <a href="mailto:contacto@chiledj.cl">contacto@chiledj.cl</a>
+            </div>
+
+        </div>
+    </footer>
+
+
+    <!-- Preguntas frecuentes para Google (debe coincidir con la sección visible) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            { "@type": "Question", "name": "¿Qué significa validar una declaración jurada?", "acceptedAnswer": { "@type": "Answer", "text": "Es revisarla antes de enviarla: comprobar que el archivo tenga el formato correcto, que los datos sean consistentes y que cumpla las reglas de validación. Así los errores se corrigen antes de que el SII los detecte." } },
+            { "@type": "Question", "name": "¿Qué es una declaración jurada observada?", "acceptedAnswer": { "@type": "Answer", "text": "Es una declaración que el SII recibió, pero en la que encontró inconsistencias que debes aclarar o corregir, normalmente con una rectificación. Revisar antes de presentar ayuda a evitarlas." } },
+            { "@type": "Question", "name": "¿Qué tipo de errores detecta NEXO DJ?", "acceptedAnswer": { "@type": "Answer", "text": "Problemas de formato y estructura del archivo, datos inconsistentes y reglas de validación que no se cumplen. Cada error aparece con la fila y el campo donde está, para que sepas exactamente qué corregir." } },
+            { "@type": "Question", "name": "¿Cuánto demora validar una declaración?", "acceptedAnswer": { "@type": "Answer", "text": "NEXO DJ procesa en tu computador, sin colas ni servidores remotos, así que el resultado aparece apenas cargas el archivo. El tiempo exacto depende del tamaño del archivo y de tu equipo, pero no tendrás que esperar horas." } },
+            { "@type": "Question", "name": "¿Dónde queda guardada mi información?", "acceptedAnswer": { "@type": "Answer", "text": "En tu propio equipo. La información que procesa NEXO DJ se almacena localmente, así mantienes el control de los datos de tus clientes." } },
+            { "@type": "Question", "name": "¿NEXO DJ funciona en la nube?", "acceptedAnswer": { "@type": "Answer", "text": "No. Es una aplicación de escritorio para Windows: tus archivos se procesan en tu computador y no se suben a servidores externos, por lo que ningún tercero puede ver tus datos confidenciales." } },
+            { "@type": "Question", "name": "¿NEXO DJ presenta la declaración por mí?", "acceptedAnswer": { "@type": "Answer", "text": "No. NEXO DJ revisa tu información y genera el archivo preparado para el SII. La presentación la sigues haciendo tú, como siempre." } },
+            { "@type": "Question", "name": "¿NEXO DJ es una casa de software?", "acceptedAnswer": { "@type": "Answer", "text": "NEXO DJ es un software para preparar y revisar declaraciones juradas, pensado para contadores y empresas. A diferencia de una casa de software que envía la declaración por ti, aquí tú revisas, corriges y descargas el archivo, y lo presentas en el sitio del SII." } },
+            { "@type": "Question", "name": "¿Sirve para la Operación Renta 2027?", "acceptedAnswer": { "@type": "Answer", "text": "Las declaraciones juradas se presentan antes y durante la Operación Renta, entre enero y marzo. NEXO DJ te ayuda a revisarlas en esas semanas, cuando los plazos se juntan y no hay tiempo para rectificar." } },
+            { "@type": "Question", "name": "¿NEXO DJ y Chile DJ son lo mismo?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Chile DJ (chiledj.cl) es el sitio de NEXO DJ, el software de declaraciones juradas para Chile." } },
+            { "@type": "Question", "name": "¿Hay un límite de contribuyentes?", "acceptedAnswer": { "@type": "Answer", "text": "No. Puedes trabajar con todos los contribuyentes que necesites, sin costos adicionales por volumen." } },
+            { "@type": "Question", "name": "¿Reemplaza la revisión de un profesional?", "acceptedAnswer": { "@type": "Answer", "text": "No. NEXO DJ automatiza la búsqueda de errores y acelera la revisión, pero no reemplaza el criterio de un profesional." } },
+            { "@type": "Question", "name": "¿Cómo puedo empezar a usarlo?", "acceptedAnswer": { "@type": "Answer", "text": "NEXO DJ está en acceso anticipado. Solicita tu acceso escribiéndonos y te contactaremos con los siguientes pasos." } }
+        ]
+    }
+    </script>
+
+    <!-- JavaScript -->
+    <script src="js/script.js?v=3"></script>
+
+</body>
+</html>
